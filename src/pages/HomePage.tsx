@@ -13,10 +13,10 @@ const quickActions = [
 ];
 
 const seasonItems = [
-  { name: 'Черника', price: '220 ₽/кг', emoji: '🫐', trend: '+5%' },
-  { name: 'Брусника', price: '185 ₽/кг', emoji: '🔴', trend: '+2%' },
-  { name: 'Лисички', price: '340 ₽/кг', emoji: '🍄', trend: '-3%' },
-  { name: 'Морошка', price: '520 ₽/кг', emoji: '🟠', trend: '+8%' },
+  { name: 'Черника', price: '220 Br/кг', emoji: '🫐', trend: '+5%' },
+  { name: 'Брусника', price: '185 Br/кг', emoji: '🔴', trend: '+2%' },
+  { name: 'Лисички', price: '340 Br/кг', emoji: '🍄', trend: '-3%' },
+  { name: 'Морошка', price: '520 Br/кг', emoji: '🟠', trend: '+8%' },
 ];
 
 const HomePage = () => {
@@ -46,7 +46,7 @@ const HomePage = () => {
           <p className="text-primary-foreground/70 text-xs mb-2">Мои итоги сезона</p>
           <div className="flex justify-between items-end">
             <div>
-              <p className="text-primary-foreground text-2xl font-bold">12 450 ₽</p>
+              <p className="text-primary-foreground text-2xl font-bold">12 450 Br</p>
               <p className="text-primary-foreground/60 text-xs mt-0.5">67 кг сдано</p>
             </div>
             <div className="flex items-center gap-1 bg-primary-foreground/20 rounded-full px-2.5 py-1">

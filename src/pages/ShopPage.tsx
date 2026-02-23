@@ -76,7 +76,7 @@ const ShopPage = () => {
                   <p className="text-sm font-bold mt-0.5 leading-tight">{product.name}</p>
                   <p className="text-[11px] text-muted-foreground mt-0.5">{product.weight}</p>
                   <div className="flex items-center justify-between mt-2">
-                    <p className="text-sm font-bold text-primary">{product.price} ₽</p>
+                    <p className="text-sm font-bold text-primary">{product.price} Br</p>
                     <button className="w-7 h-7 bg-primary text-primary-foreground rounded-lg flex items-center justify-center text-lg font-bold">+</button>
                   </div>
                 </div>

@@ -51,7 +51,7 @@ const ReferralsPage = () => {
           {[
             { label: 'Приглашено', value: stats.invited, icon: Users },
             { label: 'Активных', value: stats.activated, icon: CheckCircle },
-            { label: 'Заработано', value: `${stats.earned} ₽`, icon: Gift },
+            { label: 'Заработано', value: `${stats.earned} Br`, icon: Gift },
           ].map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -76,7 +76,7 @@ const ReferralsPage = () => {
             'Поделитесь кодом с друзьями',
             'Друг регистрируется по вашей ссылке',
             'Друг делает первую сдачу',
-            'Вы получаете 500 бонусных рублей',
+            'Вы получаете 500 бонусных бел. руб.',
           ].map((step, i) => (
             <div key={i} className="flex items-start gap-3">
               <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">{i + 1}</span>
@@ -107,7 +107,7 @@ const ReferralsPage = () => {
               </div>
               {ref.status === 'active' ? (
                 <span className="text-xs font-semibold text-primary flex items-center gap-1">
-                  <CheckCircle size={12} /> +{ref.bonus} ₽
+                  <CheckCircle size={12} /> +{ref.bonus} Br
                 </span>
               ) : (
                 <span className="text-xs text-muted-foreground flex items-center gap-1">

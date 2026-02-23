@@ -17,10 +17,10 @@ const WalletPage = () => {
           className="bg-card/15 backdrop-blur-sm rounded-2xl p-5 border border-primary-foreground/10"
         >
           <p className="text-primary-foreground/70 text-xs">Баланс</p>
-          <p className="text-primary-foreground text-3xl font-bold mt-1">{balance.toLocaleString()} ₽</p>
+          <p className="text-primary-foreground text-3xl font-bold mt-1">{balance.toLocaleString()} Br</p>
           <div className="flex items-center gap-2 mt-2">
             <Gift size={14} className="text-primary-foreground/70" />
-            <span className="text-primary-foreground/70 text-xs">Бонусы: {bonuses} ₽</span>
+            <span className="text-primary-foreground/70 text-xs">Бонусы: {bonuses} Br</span>
           </div>
           <div className="flex gap-3 mt-5">
             <button className="flex-1 bg-primary-foreground text-primary rounded-xl py-2.5 text-sm font-bold flex items-center justify-center gap-2">
@@ -63,7 +63,7 @@ const WalletPage = () => {
               </div>
               <div className="text-right">
                 <p className={`text-sm font-bold ${tx.amount >= 0 ? 'text-primary' : 'text-foreground'}`}>
-                  {tx.amount >= 0 ? '+' : ''}{tx.amount.toLocaleString()} ₽
+                  {tx.amount >= 0 ? '+' : ''}{tx.amount.toLocaleString()} Br
                 </p>
                 <p className={`text-[10px] font-medium ${
                   tx.status === 'completed' ? 'text-primary' : tx.status === 'processing' ? 'text-amber' : 'text-muted-foreground'

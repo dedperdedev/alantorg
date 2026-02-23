@@ -121,7 +121,7 @@ const MapPage = () => {
                     <div className="flex flex-wrap gap-1.5">
                       {point.acceptedItems.map(item => (
                         <span key={item.name} className="bg-forest-light text-forest-dark rounded-full px-2.5 py-1 text-xs font-medium">
-                          {item.name} — {item.price} ₽/кг
+                          {item.name} — {item.price} Br/кг
                         </span>
                       ))}
                     </div>
