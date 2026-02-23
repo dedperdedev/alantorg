@@ -128,7 +128,7 @@ const RankingPage = () => {
               <p className="text-white/70 text-xs mt-1">Награждение по итогам сезона ({SEASON_END})</p>
             </div>
           </div>
-          <p className="text-white/80 text-xs leading-relaxed mt-4 pt-3 border-t border-white/10">Лидеры по каждой категории получают призы. Чем больше сдал — выше шанс победить!</p>
+          <p className="text-white/80 text-xs leading-relaxed mt-4 pt-3 border-t border-white/10">Сдавайте больше — поднимайтесь в рейтинге. В конце сезона — призы!</p>
         </motion.div>
       </div>
 

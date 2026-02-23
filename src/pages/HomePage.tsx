@@ -1,7 +1,31 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Map, MapPin, Plus, Wallet, Users, Briefcase, ChevronRight, TrendingUp, Trophy, Cloud } from 'lucide-react';
+import { Map, MapPin, Plus, Wallet, Users, Briefcase, ChevronRight, TrendingUp, Trophy, Cloud, CloudRain, Sun, CloudSnow } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logo from '@/assets/logo.png';
+
+const GOMEL_LAT = 52.4345;
+const GOMEL_LON = 30.9754;
+const WEATHER_CITY = 'Гомель';
+
+function getWeatherLabel(code: number): string {
+  if (code === 0) return 'ясно';
+  if (code <= 3) return 'облачно';
+  if (code === 45 || code === 48) return 'туман';
+  if (code >= 51 && code <= 67) return 'дождь';
+  if (code >= 71 && code <= 77) return 'снег';
+  if (code >= 80 && code <= 82) return 'ливень';
+  if (code >= 85 && code <= 86) return 'снегопад';
+  if (code >= 95) return 'гроза';
+  return 'облачно';
+}
+
+function getWeatherIcon(code: number) {
+  if (code === 0) return Sun;
+  if (code >= 71 && code <= 86) return CloudSnow;
+  if ((code >= 51 && code <= 82) || code >= 95) return CloudRain;
+  return Cloud;
+}
 
 const quickActions = [
   { icon: MapPin, label: 'Пункты приёма', to: '/map', color: 'bg-primary/10 text-primary' },
@@ -20,6 +44,28 @@ const seasonItems = [
 ];
 
 const HomePage = () => {
+  const [weather, setWeather] = useState<{ temp: number; code: number } | null>(null);
+  const [weatherError, setWeatherError] = useState(false);
+
+  useEffect(() => {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${GOMEL_LAT}&longitude=${GOMEL_LON}&current=temperature_2m,weather_code`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        const cur = data?.current;
+        if (cur != null && typeof cur.temperature_2m === 'number') {
+          setWeather({ temp: Math.round(cur.temperature_2m), code: cur.weather_code ?? 3 });
+        } else {
+          setWeatherError(true);
+        }
+      })
+      .catch(() => setWeatherError(true));
+  }, []);
+
+  const WeatherIcon = weather ? getWeatherIcon(weather.code) : Cloud;
+  const tempStr = weather != null ? `${weather.temp > 0 ? '+' : ''}${weather.temp}°C` : '—';
+  const conditionStr = weather ? getWeatherLabel(weather.code) : (weatherError ? 'нет данных' : '…');
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -33,10 +79,10 @@ const HomePage = () => {
             </div>
           </div>
           <div className="bg-card/20 rounded-2xl px-3 py-2 flex items-center gap-2">
-            <Cloud size={16} className="text-primary-foreground/90" />
+            <WeatherIcon size={16} className="text-primary-foreground/90" />
             <div className="text-left">
-              <p className="text-primary-foreground text-xs font-semibold leading-tight">+5°C</p>
-              <p className="text-primary-foreground/70 text-[10px] leading-tight">Гомель, облачно</p>
+              <p className="text-primary-foreground text-xs font-semibold leading-tight">{tempStr}</p>
+              <p className="text-primary-foreground/70 text-[10px] leading-tight">{WEATHER_CITY}, {conditionStr}</p>
             </div>
           </div>
         </div>
