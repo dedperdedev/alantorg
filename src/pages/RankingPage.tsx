@@ -112,7 +112,6 @@ const RankingPage = () => {
           <h1 className="text-white text-lg font-bold">Рейтинг сезона</h1>
           <div className="w-10" />
         </div>
-        <p className="text-white/80 text-xs leading-relaxed mb-5">Сдавайте больше — поднимайтесь в рейтинге. В конце сезона — призы!</p>
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -134,7 +133,6 @@ const RankingPage = () => {
 
       {/* Category tabs */}
       <div className="px-5 mt-1">
-        <p className="text-sm font-semibold text-foreground mb-2">Выберите категорию (нажмите на нужную):</p>
         <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
           {categories.map((cat) => (
             <button
