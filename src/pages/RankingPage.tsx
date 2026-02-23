@@ -105,35 +105,35 @@ const RankingPage = () => {
     <div className="min-h-screen pb-24">
       {/* Header */}
       <div className="bg-gradient-to-br from-amber-500 to-amber-700 px-5 pt-12 pb-8 rounded-b-3xl">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-3">
           <Link to="/" className="p-2 bg-white/20 rounded-xl" title="Назад на главную">
             <ArrowLeft size={18} className="text-white" />
           </Link>
           <h1 className="text-white text-lg font-bold">Рейтинг сезона</h1>
           <div className="w-10" />
         </div>
-        <p className="text-white/80 text-xs mb-4">Сдавайте больше — поднимайтесь в рейтинге. В конце сезона — призы!</p>
+        <p className="text-white/80 text-xs leading-relaxed mb-5">Сдавайте больше — поднимайтесь в рейтинге. В конце сезона — призы!</p>
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="bg-white/15 backdrop-blur-sm rounded-2xl p-4 border border-white/20"
+          className="bg-white/15 backdrop-blur-sm rounded-2xl p-5 border border-white/20"
         >
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
               <Trophy size={24} className="text-white" />
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="text-white/90 text-sm font-semibold">Призовой фонд</p>
-              <p className="text-white text-xl font-bold">{PRIZE_BR.toLocaleString()} Br</p>
-              <p className="text-white/70 text-xs mt-0.5">Награждение по итогам сезона ({SEASON_END})</p>
+              <p className="text-white text-xl font-bold mt-0.5">{PRIZE_BR.toLocaleString()} Br</p>
+              <p className="text-white/70 text-xs mt-1">Награждение по итогам сезона ({SEASON_END})</p>
             </div>
           </div>
-          <p className="text-white/80 text-xs mt-3">Лидеры по каждой категории получают призы. Чем больше сдал — выше шанс победить!</p>
+          <p className="text-white/80 text-xs leading-relaxed mt-4 pt-3 border-t border-white/10">Лидеры по каждой категории получают призы. Чем больше сдал — выше шанс победить!</p>
         </motion.div>
       </div>
 
       {/* Category tabs */}
-      <div className="px-5 -mt-2">
+      <div className="px-5 mt-1">
         <p className="text-sm font-semibold text-foreground mb-2">Выберите категорию (нажмите на нужную):</p>
         <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
           {categories.map((cat) => (
