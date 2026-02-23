@@ -60,21 +60,26 @@ const mockLeaders: Record<string, { name: string; kg: number }[]> = {
   ],
 };
 
+const CURRENT_USER = 'Иван Петров';
+
 const RankingPage = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0].id);
   const leaders = mockLeaders[activeCategory] ?? [];
+  const myPlace = leaders.findIndex((l) => l.name === CURRENT_USER) + 1;
+  const myEntry = leaders.find((l) => l.name === CURRENT_USER);
 
   return (
     <div className="min-h-screen pb-24">
       {/* Header */}
       <div className="bg-gradient-to-br from-amber-500 to-amber-700 px-5 pt-12 pb-8 rounded-b-3xl">
         <div className="flex items-center justify-between mb-4">
-          <Link to="/" className="p-2 bg-white/20 rounded-xl">
+          <Link to="/" className="p-2 bg-white/20 rounded-xl" title="Назад на главную">
             <ArrowLeft size={18} className="text-white" />
           </Link>
           <h1 className="text-white text-lg font-bold">Рейтинг сезона</h1>
           <div className="w-10" />
         </div>
+        <p className="text-white/80 text-xs mb-4">Сдавайте больше — поднимайтесь в рейтинге. В конце сезона — призы!</p>
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -96,6 +101,7 @@ const RankingPage = () => {
 
       {/* Category tabs */}
       <div className="px-5 -mt-2">
+        <p className="text-sm font-semibold text-foreground mb-2">Выберите категорию (нажмите на нужную):</p>
         <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
           {categories.map((cat) => (
             <button
@@ -112,11 +118,21 @@ const RankingPage = () => {
         </div>
       </div>
 
+      {/* My place card */}
+      {myPlace > 0 && myEntry && (
+        <div className="px-5 mt-4">
+          <div className="bg-primary/10 border border-primary/30 rounded-2xl p-4">
+            <p className="text-xs font-semibold text-muted-foreground mb-1">Ваше место в категории «{categories.find((c) => c.id === activeCategory)?.name}»</p>
+            <p className="text-2xl font-bold text-primary">Место №{myPlace}</p>
+            <p className="text-sm text-muted-foreground mt-0.5">Вы сдали {myEntry.kg.toLocaleString()} кг</p>
+          </div>
+        </div>
+      )}
+
       {/* Leaderboard */}
       <div className="px-5 mt-4">
-        <h2 className="text-sm font-semibold text-muted-foreground mb-3">
-          Топ по категории «{categories.find((c) => c.id === activeCategory)?.name}»
-        </h2>
+        <h2 className="text-sm font-semibold text-foreground mb-2">Список лидеров по «{categories.find((c) => c.id === activeCategory)?.name}»</h2>
+        <p className="text-xs text-muted-foreground mb-3">Отсортировано по количеству сданных кг</p>
         <div className="bg-card border border-border rounded-2xl overflow-hidden divide-y divide-border">
           <AnimatePresence mode="wait">
             {leaders.map((leader, index) => (
@@ -136,7 +152,10 @@ const RankingPage = () => {
                   {index < 3 ? <Medal size={18} /> : <span className="text-sm font-bold">{index + 1}</span>}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className={`font-semibold ${leader.name === 'Иван Петров' ? 'text-primary' : ''}`}>{leader.name}</p>
+                  <p className={`font-semibold ${leader.name === CURRENT_USER ? 'text-primary' : ''}`}>
+                    {leader.name}
+                    {leader.name === CURRENT_USER && <span className="ml-1.5 text-xs font-normal text-primary">(это вы)</span>}
+                  </p>
                   <p className="text-xs text-muted-foreground">{leader.kg.toLocaleString()} кг сдано</p>
                 </div>
                 <p className="text-lg font-bold text-primary">{leader.kg.toLocaleString()} кг</p>
