@@ -14,6 +14,7 @@ import ProfilePage from "./pages/ProfilePage";
 import ReferralsPage from "./pages/ReferralsPage";
 import VacanciesPage from "./pages/VacanciesPage";
 import RankingPage from "./pages/RankingPage";
+import WeatherPage from "./pages/WeatherPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -39,6 +40,7 @@ const App = () => {
               <Route path="/referrals" element={<ReferralsPage />} />
               <Route path="/vacancies" element={<VacanciesPage />} />
               <Route path="/ranking" element={<RankingPage />} />
+              <Route path="/weather" element={<WeatherPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </MobileLayout>

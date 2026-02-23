@@ -78,13 +78,13 @@ const HomePage = () => {
               <h1 className="text-primary-foreground text-lg font-bold">Иван Петров</h1>
             </div>
           </div>
-          <div className="bg-card/20 rounded-2xl px-3 py-2 flex items-center gap-2">
+          <Link to="/weather" className="bg-card/20 rounded-2xl px-3 py-2 flex items-center gap-2 hover:bg-card/30 transition-colors">
             <WeatherIcon size={16} className="text-primary-foreground/90" />
             <div className="text-left">
               <p className="text-primary-foreground text-xs font-semibold leading-tight">{tempStr}</p>
               <p className="text-primary-foreground/70 text-[10px] leading-tight">{WEATHER_CITY}, {conditionStr}</p>
             </div>
-          </div>
+          </Link>
         </div>
         
         {/* Stats card */}
