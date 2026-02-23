@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Map, MapPin, Plus, Wallet, Users, Briefcase, ChevronRight, TrendingUp, Trophy } from 'lucide-react';
+import { Map, MapPin, Plus, Wallet, Users, Briefcase, ChevronRight, TrendingUp, Trophy, Cloud } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logo from '@/assets/logo.png';
 
@@ -32,8 +32,12 @@ const HomePage = () => {
               <h1 className="text-primary-foreground text-lg font-bold">Иван Петров</h1>
             </div>
           </div>
-          <div className="bg-card/20 rounded-2xl px-3 py-1.5">
-            <p className="text-primary-foreground text-xs font-semibold">Сезон 2026 🌿</p>
+          <div className="bg-card/20 rounded-2xl px-3 py-2 flex items-center gap-2">
+            <Cloud size={16} className="text-primary-foreground/90" />
+            <div className="text-left">
+              <p className="text-primary-foreground text-xs font-semibold leading-tight">+5°C</p>
+              <p className="text-primary-foreground/70 text-[10px] leading-tight">Гомель, облачно</p>
+            </div>
           </div>
         </div>
         
