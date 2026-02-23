@@ -8,7 +8,7 @@ const menuSections = [
     title: 'Активности',
     items: [
       { icon: MapPin, label: 'Мои сдачи', to: '/submissions' },
-      { icon: Users, label: 'Рефералы', to: '/referrals', badge: '+0,5 Br' },
+      { icon: Users, label: 'Друзья', to: '/referrals', badge: '+0,5 Br' },
       { icon: Briefcase, label: 'Вакансии', to: '/vacancies' },
     ],
   },

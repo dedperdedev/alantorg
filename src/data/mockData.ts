@@ -109,7 +109,7 @@ export const vacancies: Vacancy[] = [
 export const walletTransactions: WalletTransaction[] = [
   { id: '1', type: 'income', amount: 4600, description: 'Сдача: Черника 20 кг', date: '2026-02-20', status: 'completed' },
   { id: '2', type: 'income', amount: 2700, description: 'Сдача: Брусника 15 кг', date: '2026-02-18', status: 'completed' },
-  { id: '3', type: 'bonus', amount: 0.5, description: 'Реферальный бонус', date: '2026-02-17', status: 'completed' },
+  { id: '3', type: 'bonus', amount: 0.5, description: 'Бонус за друга', date: '2026-02-17', status: 'completed' },
   { id: '4', type: 'withdrawal', amount: -5000, description: 'Вывод на карту *4532', date: '2026-02-15', status: 'completed' },
   { id: '5', type: 'income', amount: 3200, description: 'Сдача: Лисички 10 кг', date: '2026-02-12', status: 'completed' },
   { id: '6', type: 'withdrawal', amount: -3000, description: 'Вывод СБП', date: '2026-02-10', status: 'processing' },

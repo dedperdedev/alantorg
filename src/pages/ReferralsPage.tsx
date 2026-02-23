@@ -22,7 +22,7 @@ const ReferralsPage = () => {
           <Link to="/" className="p-2 bg-card/20 rounded-xl">
             <ArrowLeft size={18} className="text-accent-foreground" />
           </Link>
-          <h1 className="text-accent-foreground text-lg font-bold">Рефералы</h1>
+          <h1 className="text-accent-foreground text-lg font-bold">Друзья</h1>
         </div>
 
         <motion.div
@@ -30,7 +30,7 @@ const ReferralsPage = () => {
           animate={{ scale: 1, opacity: 1 }}
           className="bg-card/15 backdrop-blur-sm rounded-2xl p-5 border border-accent-foreground/10"
         >
-          <p className="text-accent-foreground/70 text-xs">Ваш реферальный код</p>
+          <p className="text-accent-foreground/70 text-xs">Ваша ссылка для друзей</p>
           <div className="flex items-center gap-3 mt-2">
             <p className="text-accent-foreground text-2xl font-bold tracking-wider">{code}</p>
             <button className="p-2 bg-accent-foreground/20 rounded-xl">
@@ -73,7 +73,7 @@ const ReferralsPage = () => {
         <h2 className="text-base font-bold mb-3">Как это работает</h2>
         <div className="bg-card border border-border rounded-2xl p-4 space-y-3">
           {[
-            'Поделитесь кодом с друзьями',
+            'Скопируйте ссылку и поделитесь с друзьями',
             'Друг регистрируется по вашей ссылке',
             'Друг делает первую сдачу от 5 кг',
             'Вы получаете 0,5 бел. руб.',
@@ -88,7 +88,7 @@ const ReferralsPage = () => {
 
       {/* Recent */}
       <div className="px-5 mt-6">
-        <h2 className="text-base font-bold mb-3">Приглашённые</h2>
+        <h2 className="text-base font-bold mb-3">Друзья</h2>
         <div className="space-y-2">
           {referrals.map((ref, i) => (
             <motion.div

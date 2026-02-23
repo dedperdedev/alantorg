@@ -31,7 +31,7 @@ const quickActions = [
   { icon: MapPin, label: 'Пункты приёма', to: '/map', color: 'bg-primary/10 text-primary' },
   { icon: Plus, label: 'Создать сдачу', to: '/submission', color: 'bg-amber-light text-amber' },
   { icon: Wallet, label: 'Кошелёк', to: '/wallet', color: 'bg-forest-light text-forest' },
-  { icon: Users, label: 'Рефералы', to: '/referrals', color: 'bg-accent/10 text-accent' },
+  { icon: Users, label: 'Друзья', to: '/referrals', color: 'bg-accent/10 text-accent' },
   { icon: Briefcase, label: 'Вакансии', to: '/vacancies', color: 'bg-secondary text-foreground' },
   { icon: Map, label: 'Карта', to: '/map', color: 'bg-primary/10 text-primary' },
 ];
