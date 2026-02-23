@@ -14,7 +14,7 @@ const SplashScreen = ({ onFinish }: SplashScreenProps) => {
     const timer = setTimeout(() => {
       setVisible(false);
       setTimeout(onFinish, 500);
-    }, 1500);
+    }, 3500);
     return () => clearTimeout(timer);
   }, [onFinish]);
 
@@ -40,9 +40,17 @@ const SplashScreen = ({ onFinish }: SplashScreenProps) => {
             transition={{ delay: 0.2, duration: 0.6, ease: 'easeOut' }}
             className="relative z-10 flex flex-col items-center"
           >
-            <div className="w-48 h-48 rounded-3xl glass p-4 shadow-2xl flex items-center justify-center">
-              <img src={logo} alt="Alantorg" className="w-full h-full object-contain" />
-            </div>
+            <motion.img
+              src={logo}
+              alt="Alantorg"
+              className="w-96 h-96 object-contain"
+              animate={{ scale: [1, 1.08, 1] }}
+              transition={{
+                duration: 1.2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
           </motion.div>
         </motion.div>
       )}
