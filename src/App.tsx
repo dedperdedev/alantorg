@@ -27,7 +27,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         {showSplash && <SplashScreen onFinish={handleSplashFinish} />}
-        <BrowserRouter>
+        <BrowserRouter basename="/alantorg">
           <MobileLayout>
             <Routes>
               <Route path="/" element={<HomePage />} />
