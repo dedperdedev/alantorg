@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Map, MapPin, Plus, Wallet, Users, Briefcase, ChevronRight, TrendingUp } from 'lucide-react';
+import { Map, MapPin, Plus, Wallet, Users, Briefcase, ChevronRight, TrendingUp, Trophy } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logo from '@/assets/logo.png';
 
@@ -43,7 +43,16 @@ const HomePage = () => {
           animate={{ y: 0, opacity: 1 }}
           className="bg-card/15 backdrop-blur-sm rounded-2xl p-4 border border-primary-foreground/10"
         >
-          <p className="text-primary-foreground/70 text-xs mb-2">Мои итоги сезона</p>
+          <div className="flex items-start justify-between gap-2 mb-2">
+            <p className="text-primary-foreground/70 text-xs">Мои итоги сезона</p>
+            <Link
+              to="/ranking"
+              className="p-1.5 rounded-xl bg-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/30 transition-colors"
+              aria-label="Рейтинг сезона"
+            >
+              <Trophy size={18} />
+            </Link>
+          </div>
           <div className="flex justify-between items-end">
             <div>
               <p className="text-primary-foreground text-2xl font-bold">12 450 Br</p>

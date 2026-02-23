@@ -7,10 +7,10 @@ const ReferralsPage = () => {
   const stats = { invited: 12, activated: 8, earned: 2400 };
 
   const referrals = [
-    { name: 'Мария К.', status: 'active', bonus: 500, date: '20.02.2026' },
-    { name: 'Алексей П.', status: 'active', bonus: 500, date: '18.02.2026' },
+    { name: 'Мария К.', status: 'active', bonus: 0.5, date: '20.02.2026' },
+    { name: 'Алексей П.', status: 'active', bonus: 0.5, date: '18.02.2026' },
     { name: 'Ольга С.', status: 'pending', bonus: 0, date: '15.02.2026' },
-    { name: 'Дмитрий В.', status: 'active', bonus: 500, date: '10.02.2026' },
+    { name: 'Дмитрий В.', status: 'active', bonus: 0.5, date: '10.02.2026' },
     { name: 'Елена Н.', status: 'pending', bonus: 0, date: '08.02.2026' },
   ];
 
@@ -75,8 +75,8 @@ const ReferralsPage = () => {
           {[
             'Поделитесь кодом с друзьями',
             'Друг регистрируется по вашей ссылке',
-            'Друг делает первую сдачу',
-            'Вы получаете 500 бонусных бел. руб.',
+            'Друг делает первую сдачу от 5 кг',
+            'Вы получаете 0,5 бел. руб.',
           ].map((step, i) => (
             <div key={i} className="flex items-start gap-3">
               <span className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">{i + 1}</span>
