@@ -74,6 +74,13 @@ export const products: Product[] = [
   { id: '6', name: 'Мёд лесной', category: 'Мёд', price: 780, image: '🍯', description: 'Мёд из лесного разнотравья Русского Севера', weight: '500 г' },
   { id: '7', name: 'Чай с иван-чаем', category: 'Напитки', price: 380, image: '🍵', description: 'Ферментированный иван-чай с ягодами', weight: '100 г' },
   { id: '8', name: 'Лисички маринованные', category: 'Грибы', price: 550, image: '🍄', description: 'Маринованные лисички по домашнему рецепту', weight: '400 мл' },
+  { id: '9', name: 'Гребёнка для ягод', category: 'Инвентарь', price: 280, image: '🪮', description: 'Удобная гребёнка для быстрого сбора черники и брусники', weight: '1 шт' },
+  { id: '10', name: 'Ведро для сбора', category: 'Инвентарь', price: 450, image: '🪣', description: 'Пластиковое ведро 10 л для похода за ягодами и грибами', weight: '10 л' },
+  { id: '11', name: 'Ручные весы', category: 'Инвентарь', price: 520, image: '⚖️', description: 'Карманные пружинные весы до 5 кг для взвешивания на месте', weight: 'до 5 кг' },
+  { id: '12', name: 'Резиновые сапоги', category: 'Инвентарь', price: 890, image: '👢', description: 'Высокие сапоги для сбора в сырых местах и после дождя', weight: '1 пара' },
+  { id: '13', name: 'Дождевик', category: 'Инвентарь', price: 420, image: '🧥', description: 'Лёгкий дождевик с капюшоном, удобно брать в рюкзак', weight: '1 шт' },
+  { id: '14', name: 'Средства от комаров, мошек и москитов', category: 'Инвентарь', price: 380, image: '🦟', description: 'Спрей или крем для защиты от комаров, мошек и москитов в лесу', weight: '100 мл' },
+  { id: '15', name: 'Термобельё', category: 'Инвентарь', price: 720, image: '👕', description: 'Термобельё для прохладной погоды, комфортно на сборе в лесу', weight: '1 комплект' },
 ];
 
 export const articles: Article[] = [
