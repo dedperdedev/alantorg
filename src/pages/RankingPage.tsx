@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 const PRIZE_BR = 1000;
 const SEASON_END = 'октябрь 2026';
 
+/** Награда в Br за место (1–10). Сумма = 1000. */
+const REWARDS_BY_PLACE: number[] = [250, 180, 140, 110, 90, 70, 55, 45, 35, 25];
+
 const categories = [
   { id: 'blueberry', name: 'Черника', emoji: '🫐' },
   { id: 'lingonberry', name: 'Брусника', emoji: '🔴' },
@@ -22,6 +25,11 @@ const mockLeaders: Record<string, { name: string; kg: number }[]> = {
     { name: 'Иван Петров', kg: 670 },
     { name: 'Ольга К.', kg: 520 },
     { name: 'Дмитрий В.', kg: 410 },
+    { name: 'Светлана Р.', kg: 380 },
+    { name: 'Николай Г.', kg: 290 },
+    { name: 'Елена Н.', kg: 240 },
+    { name: 'Михаил Т.', kg: 195 },
+    { name: 'Татьяна В.', kg: 160 },
   ],
   lingonberry: [
     { name: 'Елена Н.', kg: 680 },
@@ -29,6 +37,11 @@ const mockLeaders: Record<string, { name: string; kg: number }[]> = {
     { name: 'Мария К.', kg: 390 },
     { name: 'Иван Петров', kg: 280 },
     { name: 'Алексей Л.', kg: 210 },
+    { name: 'Ольга К.', kg: 180 },
+    { name: 'Дмитрий В.', kg: 150 },
+    { name: 'Ирина Д.', kg: 120 },
+    { name: 'Павел Ж.', kg: 95 },
+    { name: 'Наталья П.', kg: 70 },
   ],
   chanterelle: [
     { name: 'Николай Г.', kg: 320 },
@@ -36,6 +49,11 @@ const mockLeaders: Record<string, { name: string; kg: number }[]> = {
     { name: 'Татьяна В.', kg: 140 },
     { name: 'Андрей С.', kg: 95 },
     { name: 'Виктория М.', kg: 72 },
+    { name: 'Олег К.', kg: 58 },
+    { name: 'Мария К.', kg: 45 },
+    { name: 'Сергей П.', kg: 38 },
+    { name: 'Екатерина Л.', kg: 28 },
+    { name: 'Владимир Н.', kg: 22 },
   ],
   cloudberry: [
     { name: 'Ирина Д.', kg: 290 },
@@ -43,6 +61,11 @@ const mockLeaders: Record<string, { name: string; kg: number }[]> = {
     { name: 'Иван Петров', kg: 150 },
     { name: 'Наталья П.', kg: 88 },
     { name: 'Михаил Т.', kg: 65 },
+    { name: 'Анна С.', kg: 52 },
+    { name: 'Елена Н.', kg: 41 },
+    { name: 'Дмитрий В.', kg: 33 },
+    { name: 'Юлия К.', kg: 26 },
+    { name: 'Павел Ж.', kg: 18 },
   ],
   bilberry: [
     { name: 'Дмитрий В.', kg: 450 },
@@ -50,6 +73,11 @@ const mockLeaders: Record<string, { name: string; kg: number }[]> = {
     { name: 'Светлана Р.', kg: 280 },
     { name: 'Павел Ж.', kg: 190 },
     { name: 'Юлия К.', kg: 120 },
+    { name: 'Ольга К.', kg: 95 },
+    { name: 'Александр Б.', kg: 78 },
+    { name: 'Мария К.', kg: 62 },
+    { name: 'Николай Г.', kg: 48 },
+    { name: 'Татьяна В.', kg: 35 },
   ],
   mushrooms: [
     { name: 'Александр Б.', kg: 580 },
@@ -57,6 +85,11 @@ const mockLeaders: Record<string, { name: string; kg: number }[]> = {
     { name: 'Екатерина Л.', kg: 270 },
     { name: 'Владимир Н.', kg: 195 },
     { name: 'Анна М.', kg: 160 },
+    { name: 'Сергей П.', kg: 130 },
+    { name: 'Олег К.', kg: 105 },
+    { name: 'Мария К.', kg: 82 },
+    { name: 'Дмитрий В.', kg: 58 },
+    { name: 'Ирина Д.', kg: 42 },
   ],
 };
 
@@ -125,6 +158,7 @@ const RankingPage = () => {
             <p className="text-xs font-semibold text-muted-foreground mb-1">Ваше место в категории «{categories.find((c) => c.id === activeCategory)?.name}»</p>
             <p className="text-2xl font-bold text-primary">Место №{myPlace}</p>
             <p className="text-sm text-muted-foreground mt-0.5">Вы сдали {myEntry.kg.toLocaleString()} кг</p>
+            <p className="text-sm font-semibold text-primary mt-1">Награда: {REWARDS_BY_PLACE[myPlace - 1]} Br</p>
           </div>
         </div>
       )}
@@ -135,32 +169,36 @@ const RankingPage = () => {
         <p className="text-xs text-muted-foreground mb-3">Отсортировано по количеству сданных кг</p>
         <div className="bg-card border border-border rounded-2xl overflow-hidden divide-y divide-border">
           <AnimatePresence mode="wait">
-            {leaders.map((leader, index) => (
-              <motion.div
-                key={leader.name + leader.kg}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ delay: index * 0.03 }}
-                className="flex items-center gap-3 p-4"
-              >
-                <div
-                  className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                    index === 0 ? 'bg-amber-100 text-amber-700' : index === 1 ? 'bg-slate-200 text-slate-600' : index === 2 ? 'bg-amber-50 text-amber-800' : 'bg-muted text-muted-foreground'
-                  }`}
+            {leaders.map((leader, index) => {
+              const rewardBr = REWARDS_BY_PLACE[index] ?? 0;
+              return (
+                <motion.div
+                  key={leader.name + leader.kg + index}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ delay: index * 0.03 }}
+                  className="flex items-center gap-3 p-4"
                 >
-                  {index < 3 ? <Medal size={18} /> : <span className="text-sm font-bold">{index + 1}</span>}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className={`font-semibold ${leader.name === CURRENT_USER ? 'text-primary' : ''}`}>
-                    {leader.name}
-                    {leader.name === CURRENT_USER && <span className="ml-1.5 text-xs font-normal text-primary">(это вы)</span>}
-                  </p>
-                  <p className="text-xs text-muted-foreground">{leader.kg.toLocaleString()} кг сдано</p>
-                </div>
-                <p className="text-lg font-bold text-primary">{leader.kg.toLocaleString()} кг</p>
-              </motion.div>
-            ))}
+                  <div
+                    className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                      index === 0 ? 'bg-amber-100 text-amber-700' : index === 1 ? 'bg-slate-200 text-slate-600' : index === 2 ? 'bg-amber-50 text-amber-800' : 'bg-muted text-muted-foreground'
+                    }`}
+                  >
+                    {index < 3 ? <Medal size={18} /> : <span className="text-sm font-bold">{index + 1}</span>}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className={`font-semibold ${leader.name === CURRENT_USER ? 'text-primary' : ''}`}>
+                      {leader.name}
+                      {leader.name === CURRENT_USER && <span className="ml-1.5 text-xs font-normal text-primary">(это вы)</span>}
+                    </p>
+                    <p className="text-xs text-muted-foreground">{leader.kg.toLocaleString()} кг сдано</p>
+                    <p className="text-xs font-semibold text-primary mt-0.5">Награда: {rewardBr} Br</p>
+                  </div>
+                  <p className="text-lg font-bold text-primary">{leader.kg.toLocaleString()} кг</p>
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </div>
       </div>
