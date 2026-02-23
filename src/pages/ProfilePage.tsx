@@ -40,8 +40,8 @@ const ProfilePage = () => {
           </div>
           <div>
             <h1 className="text-lg font-bold">Иван Петров</h1>
-            <p className="text-xs text-muted-foreground">+7 921 123-45-67</p>
-            <p className="text-xs text-muted-foreground">Архангельская обл.</p>
+            <p className="text-xs text-muted-foreground">+375 29 123-45-67</p>
+            <p className="text-xs text-muted-foreground">Гомельская обл.</p>
           </div>
         </div>
         <button className="mt-4 w-full bg-secondary text-foreground rounded-xl py-2.5 text-sm font-semibold">
